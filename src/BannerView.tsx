@@ -9,9 +9,15 @@ type AdType =
   | 'BANNER_400x240'
   | 'BANNER_728x90';
 
+type BannerType = 'adfox' | 'ya';
+
 interface NativeBannerViewProps {
   size: string;
   adUnitId: string;
+  type: BannerType;
+  ownerIdAdfox: string;
+  p1Adfox: string;
+  p2Adfox: string;
   onError?: Function;
   onLoad?: Function;
   onLeftApplication?: Function;
@@ -22,6 +28,10 @@ interface NativeBannerViewProps {
 interface BannerViewProps {
   size: AdType;
   adUnitId: string;
+  type?: BannerType;
+  ownerIdAdfox?: string;
+  p1Adfox?: string;
+  p2Adfox?: string;
   onError?: Function;
   onLoad?: Function;
   onLeftApplication?: Function;
@@ -57,6 +67,10 @@ const BannerView = (props: BannerViewProps) => {
   const {
     size,
     adUnitId,
+    type = 'ya',
+    ownerIdAdfox = '',
+    p1Adfox = '',
+    p2Adfox = '',
     onError,
     onLoad,
     onLeftApplication,
@@ -71,6 +85,10 @@ const BannerView = (props: BannerViewProps) => {
     <RNBannerView
       adUnitId={adUnitId}
       size={size}
+      type={type}
+      ownerIdAdfox={ownerIdAdfox}
+      p1Adfox={p1Adfox}
+      p2Adfox={p2Adfox}
       onError={onError}
       onLoad={onLoad}
       onLeftApplication={onLeftApplication}

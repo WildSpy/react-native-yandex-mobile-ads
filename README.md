@@ -71,6 +71,19 @@ RewardedAdManager.showAd('R-M-DEMO-rewarded-client-side-rtb')
 }}
 ```
 
+## AdFox support
+
+New banners properties to support adfox. iOS only for now.
+```
+type BannerType = 'adfox' | 'ya';
+```
+```
+type: BannerType;
+ownerIdAdfox: string;
+p1Adfox: string;
+p2Adfox: string;
+```
+
 ## Contributing
 Mobile Ads SDK [documentation](https://yandex.ru/dev/mobile-ads/doc/intro/about.html)
 You can look at alternative implementations [react-native-admob](https://github.com/sbugert/react-native-admob),

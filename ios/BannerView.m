@@ -23,7 +23,6 @@
     [self createViewIfCan];
 }
 
-
 - (void)createViewIfCan
 {
     if (!_adUnitId || !_size) {
@@ -40,7 +39,32 @@
     adView.frame = CGRectMake(0, 0, adView.bounds.size.width, adView.bounds.size.height);
     adView.delegate = self;
 
-    [adView loadAd];
+    if([_type isEqualToString:@"adfox"]) {
+          NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+          parameters[@"adf_ownerid"] = _ownerIdAdfox;
+          parameters[@"adf_p1"] = _p1Adfox;
+          parameters[@"adf_p2"] = _p2Adfox;
+          parameters[@"adf_pt"] = @"b";
+          parameters[@"adf_pd"] = @"";
+          parameters[@"adf_pw"] = @"";
+          parameters[@"adf_pv"] = @"";
+          parameters[@"adf_prr"] = @"";
+          parameters[@"adf_pdw"] = @"";
+          parameters[@"adf_pdh"] = @"";
+          parameters[@"adf_puid1"] = @"";
+          parameters[@"adf_puid2"] = @"";
+          parameters[@"adf_puid3"] = @"";
+          parameters[@"adf_puid4"] = @"";
+          parameters[@"adf_puid5"] = @"";
+          parameters[@"adf_puid6"] = @"";
+          parameters[@"adf_puid7"] = @"";
+          YMAMutableAdRequest *request = [[YMAMutableAdRequest alloc] init];
+          request.parameters = parameters;
+
+          [adView loadAdWithRequest:request];
+    } else {
+          [adView loadAd];
+    }
 
     [self addSubview:adView];
 
