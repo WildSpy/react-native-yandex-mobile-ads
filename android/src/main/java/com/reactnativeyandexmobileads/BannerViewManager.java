@@ -12,6 +12,26 @@ import java.util.Map;
 
 public class BannerViewManager extends SimpleViewManager<BannerView> {
 
+  @ReactProp(name = "ownerIdAdfox")
+  public void setOwnerIdAdfox(BannerView view, String ownerIdAdfox) {
+    view.setOwnerIdAdfox(ownerIdAdfox);
+  }
+
+  @ReactProp(name = "type")
+  public void setType(BannerView view, String type) {
+    view.setType(type);
+  }
+
+  @ReactProp(name = "p1Adfox")
+  public void setP1Adfox(BannerView view, String p1Adfox) {
+    view.setP1Adfox(p1Adfox);
+  }
+
+  @ReactProp(name = "p2Adfox")
+  public void setP2Adfox(BannerView view, String p2Adfox) {
+    view.setP2Adfox(p2Adfox);
+  }
+
   @ReactProp(name = "adUnitId")
   public void setAdUnitId(BannerView view, String adUnitId) {
     view.setAdUnitId(adUnitId);

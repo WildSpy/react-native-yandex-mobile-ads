@@ -1,5 +1,8 @@
 package com.reactnativeyandexmobileads;
 
+import java.util.Map;
+import java.util.HashMap;
+
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -26,6 +29,10 @@ public class BannerView extends ReactViewGroup implements BannerAdEventListener,
   private ReactContext mContext;
   private BannerAdView myAdView;
   private String mAdUnitId;
+  private String mType;
+  private String mOwnerIdAdfox;
+  private String mP1Adfox;
+  private String mP2Adfox;
   private AdSize mSize;
   private RCTEventEmitter mEventEmitter;
 
@@ -41,20 +48,63 @@ public class BannerView extends ReactViewGroup implements BannerAdEventListener,
     createAdViewIfCan();
   }
 
+  public void setOwnerIdAdfox(String ownerIdAdfox) {
+    mOwnerIdAdfox = ownerIdAdfox;
+    createAdViewIfCan();
+  }
+
+  public void setP1Adfox(String p1Adfox) {
+      mP1Adfox = p1Adfox;
+      createAdViewIfCan();
+  }
+
+  public void setP2Adfox(String p2Adfox) {
+      mP2Adfox = p2Adfox;
+      createAdViewIfCan();
+  }
+
+  public void setType(String type) {
+      mType = type;
+      createAdViewIfCan();
+  }
+
   public void setSize(AdSize size) {
     mSize = size;
     createAdViewIfCan();
   }
 
   private void createAdViewIfCan() {
-    if (myAdView == null && mAdUnitId != null && mSize != null) {
+    if (myAdView == null && mAdUnitId != null && mSize != null && mType != null && mOwnerIdAdfox != null && mP1Adfox != null && mP2Adfox != null) {
       this.myAdView = new BannerAdView(getContext());
 
       myAdView.setAdUnitId(mAdUnitId);
       myAdView.setAdSize(mSize);
 
       // Создание объекта таргетирования рекламы.
-      final AdRequest adRequest = new AdRequest.Builder().build();
+      final AdRequest adRequest;
+      if (new String(mType).equals("adfox")) {
+          Map<String, String> parameters = new HashMap<String, String>();
+          parameters.put("adf_ownerid", mOwnerIdAdfox);
+          parameters.put("adf_p1", mP1Adfox);
+          parameters.put("adf_p2", mP2Adfox);
+          parameters.put("adf_pt", "b");
+          parameters.put("adf_pd", "");
+          parameters.put("adf_pw", "");
+          parameters.put("adf_pv", "");
+          parameters.put("adf_prr", "");
+          parameters.put("adf_pdw", "");
+          parameters.put("adf_pdh", "");
+          parameters.put("adf_puid1", "");
+          parameters.put("adf_puid2", "");
+          parameters.put("adf_puid3", "");
+          parameters.put("adf_puid4", "");
+          parameters.put("adf_puid5", "");
+          parameters.put("adf_puid6", "");
+          parameters.put("adf_puid7", "");
+          adRequest = new AdRequest.Builder().setParameters(parameters).build();
+      } else {
+          adRequest = new AdRequest.Builder().build();
+      }
 
       // Регистрация слушателя для отслеживания событий, происходящих в баннерной рекламе.
       myAdView.setBannerAdEventListener(this);
