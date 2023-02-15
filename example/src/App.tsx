@@ -7,9 +7,15 @@ import {
   RewardedAdManager,
 } from 'react-native-yandex-mobile-ads';
 
+MobileAds.initialize({
+  userConsent: true,
+  locationConsent: true,
+  enableDebugErrorIndicator: true,
+  enableLogging: true,
+});
+
 export default class ExampleAd extends Component {
   render() {
-    MobileAds.initialize({ userConsent: true, locationConsent: true });
     return (
       <View style={styles.container}>
         <View style={styles.bannerContainer}>
