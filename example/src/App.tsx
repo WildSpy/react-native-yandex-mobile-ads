@@ -20,7 +20,7 @@ export default class ExampleAd extends Component {
       <View style={styles.container}>
         <View style={styles.bannerContainer}>
           <BannerView
-            adUnitId={'R-M-DEMO-320x250'}
+            adUnitId={'demo-banner-yandex'}
             size={'BANNER_300x300'}
             onLoad={() => console.log('onLoad')}
             onLeftApplication={() => console.log('onLeftApplication')}

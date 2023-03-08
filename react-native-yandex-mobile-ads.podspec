@@ -17,5 +17,5 @@ Pod::Spec.new do |s|
 
   s.dependency "React-Core"
   s.dependency 'YandexMobileAds', '5.5.0'
-  s.dependency 'YandexMobileAdsInstream'
+  s.dependency 'YandexMobileAdsInstream', '0.15.0'
 end
