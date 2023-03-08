@@ -153,10 +153,13 @@ public class BannerView extends ReactViewGroup implements BannerAdEventListener,
       : r.getDisplayMetrics().widthPixels;
     int pxH = dp2px(mSize.getHeight(), dm);
 
-    myAdView.measure(pxW, pxH);
-    myAdView.layout(0, 0, pxW, pxH);
+    if (myAdView != null) {
+      myAdView.measure(pxW, pxH);
+      myAdView.layout(0, 0, pxW, pxH);
 
-    addView(myAdView);
+      addView(myAdView);
+    }
+
 
     mEventEmitter.receiveEvent(getId(), "onLoad", null);
   }
