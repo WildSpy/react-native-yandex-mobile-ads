@@ -58,4 +58,5 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"  // From node_modules
   implementation "com.yandex.android:mobileads:$mobileadsVersion"
+  implementation 'com.yandex.ads.mediation:mobileads-mytarget:5.16.2.0'
 }
